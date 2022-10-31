@@ -20,6 +20,7 @@ const run = async () => {
     try {
         const userCollection = client.db("crud-for-node").collection("users");
 
+        //API: reading data form database
         app.get('/users', async (req, res) => {
             const query = {};
             const cursor = userCollection.find(query);
@@ -27,6 +28,7 @@ const run = async () => {
             res.send(users);
         })
 
+        //API: creating data from client side and posting it to the database.
         app.post('/users', async (req, res) => {
             const user = req.body;
             console.log(user)
@@ -34,6 +36,15 @@ const run = async () => {
             console.log(result);
             res.send(result)
         })
+
+
+        //deleting data from database 
+        app.delete('/users/:id', (req, res) => {
+            const id = req.params.id;
+            console.log(`trying to delete${id}`)
+        })
+
+
     } finally {
 
     }
