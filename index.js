@@ -28,6 +28,15 @@ const run = async () => {
             res.send(users);
         })
 
+        //API: 
+
+        app.get('/users/:id', async (req, res) => {
+            const id = req.params.id
+            const query = { _id: ObjectId(id) };
+            const user = await userCollection.findOne(query);
+            res.send(user);
+        })
+
         //API: creating data from client side and posting it to the database.
         app.post('/users', async (req, res) => {
             const user = req.body;
@@ -38,7 +47,7 @@ const run = async () => {
         })
 
 
-        //deleting data from database 
+        //Delete API: deleting data from database 
         app.delete('/users/:id', async (req, res) => {
             const id = req.params.id;
             console.log(`trying to delete${id}`);
