@@ -46,6 +46,24 @@ const run = async () => {
             res.send(result)
         })
 
+        //update
+        app.put('/users/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const user = req.body;
+            console.log(user)
+            /* const options = { upsert: true };
+            const updatedUser = {
+                $set: {
+                    name: user.name,
+                    email: user.email,
+                    address: user.address,
+                },
+            };
+            const result = await movies.updateOne(filter, updatedUser, options);
+            res.send(result); */
+        })
+
 
         //Delete API: deleting data from database 
         app.delete('/users/:id', async (req, res) => {
