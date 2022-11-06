@@ -52,7 +52,7 @@ const run = async () => {
             const filter = { _id: ObjectId(id) };
             const user = req.body;
             console.log(user)
-            /* const options = { upsert: true };
+            const options = { upsert: true };
             const updatedUser = {
                 $set: {
                     name: user.name,
@@ -60,8 +60,8 @@ const run = async () => {
                     address: user.address,
                 },
             };
-            const result = await movies.updateOne(filter, updatedUser, options);
-            res.send(result); */
+            const result = await userCollection.updateOne(filter, updatedUser, options);
+            res.send(result);
         })
 
 
